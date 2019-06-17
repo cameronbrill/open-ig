@@ -1,2 +1,8 @@
 # open-ig
-A React app that emulates IG's web viewer
+A React app that (tries to) emulates IG's web viewer
+
+### Getting started
+```
+npm install
+npm start
+```

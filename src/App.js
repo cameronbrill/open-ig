@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import UserFeed from './UserFeed';
+import UserProfile from './components/UserProfile';
+import UserFeed from './components/UserFeed';
 import { getUser, getMoreUser } from './getUser';
 
 const TYPING_TIMEOUT = 900;
 
 class App extends Component {
   state = {
+    // input lag
     inputValue: 'natgeo',
     typing: false,
     timeout: 0,
@@ -29,6 +31,7 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    document.title = "Open IG";
     this.updateFeed();
   }
 
@@ -73,12 +76,13 @@ class App extends Component {
       <div className="App">
         <h3>Instagram Public API</h3>
         Username
-        <br />
         <input onChange={this.changeInput} value={this.state.inputValue} />
-        <br /><br />
+        
+        {/* load after ajax request */}
+        <UserProfile user={user} />
         <UserFeed user={user} />
+        
         <button onClick={this.loadMore}>Load more</button>
-        <br /><br />
       </div>
     );
   }
